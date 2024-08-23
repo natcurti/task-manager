@@ -1,6 +1,22 @@
 @import "reset-css";
 
+:root {
+  --white: #f8fafc;
+  --yellow: #f5d565;
+  --peach: #f5e8d5;
+  --orange: #e9a23b;
+  --mint: #a0ecb1;
+  --green: #32d657;
+  --pink: #f7d4d3;
+  --red: #dd524c;
+  --light-gray: #e3e8ef;
+  --medium-gray: #00000033;
+  --dark-gray: #97a3b6;
+  --blue: #3662e3;
+}
+
 body {
   font-family: var(--outfit-font);
   font-weight: 400;
+  background-color: var(--white);
 }

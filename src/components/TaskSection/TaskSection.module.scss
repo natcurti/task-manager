@@ -1,0 +1,31 @@
+.section {
+  border-radius: 0.75rem;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.container-img-title {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+
+  h3 {
+    font-size: 1.25rem;
+    font-weight: 500;
+  }
+}
+
+.container-img,
+.container-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  display: grid;
+  place-items: center;
+  border-radius: 0.5rem;
+}
+
+.container-img {
+  background-color: var(--white);
+}
