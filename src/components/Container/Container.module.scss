@@ -4,4 +4,8 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
+
+  @media (min-width: 640px) {
+    width: 544px;
+  }
 }

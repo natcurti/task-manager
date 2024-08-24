@@ -4,9 +4,9 @@ import styles from "./TaskSection.module.scss";
 interface ITaskSection {
   title: string;
   emoji: StaticImageData;
-  icon: React.ReactNode;
   backgroundColor: string;
-  iconColor: string;
+  icon?: React.ReactNode;
+  iconColor?: string;
 }
 
 const TaskSection = ({
@@ -30,12 +30,14 @@ const TaskSection = ({
         </div>
         <h3>{title}</h3>
       </div>
-      <div
-        className={styles["container-icon"]}
-        style={{ backgroundColor: iconColor }}
-      >
-        {icon}
-      </div>
+      {icon && (
+        <div
+          className={styles["container-icon"]}
+          style={{ backgroundColor: iconColor }}
+        >
+          {icon}
+        </div>
+      )}
     </section>
   );
 };

@@ -1,9 +1,10 @@
 .section {
   border-radius: 0.75rem;
-  padding: 0.5rem;
+  padding: 0.75rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  cursor: pointer;
 }
 
 .container-img-title {
