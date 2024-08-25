@@ -119,7 +119,7 @@ export const CloseModal = () => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <circle cx="10" cy="10" r="7.5" fill="#E9A23B" fill-opacity="0.25" />
+      <circle cx="10" cy="10" r="7.5" fill="#E9A23B" fillOpacity="0.25" />
       <path
         d="M7.5 7.5L12.5 12.5"
         stroke="#E9A23B"
@@ -145,7 +145,7 @@ export const CloseIcon = () => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <circle cx="10" cy="10" r="7.5" fill="#F8FAFC" fill-opacity="0.25" />
+      <circle cx="10" cy="10" r="7.5" fill="#F8FAFC" fillOpacity="0.25" />
       <path
         d="M7.5 7.5L12.5 12.5"
         stroke="#F8FAFC"
@@ -208,7 +208,7 @@ export const AddTaskIcon = () => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <circle cx="12" cy="12" r="9" fill="#F8FAFC" fill-opacity="0.25" />
+      <circle cx="12" cy="12" r="9" fill="#F8FAFC" fillOpacity="0.25" />
       <path
         d="M12 8L12 16"
         stroke="#F8FAFC"

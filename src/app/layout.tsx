@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
 import "./globals.css";
+import { TasksProvider } from "../context/tasksContext";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -20,7 +21,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${outfit.variable}`}>
-      <body>{children}</body>
+      <TasksProvider>
+        <body>{children}</body>
+      </TasksProvider>
     </html>
   );
 }

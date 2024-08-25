@@ -1,9 +1,9 @@
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import styles from "./TaskSection.module.scss";
 
 interface ITaskSection {
   title: string;
-  emoji: StaticImageData;
+  emoji: string;
   backgroundColor: string;
   icon?: React.ReactNode;
   iconColor?: string;
@@ -22,7 +22,7 @@ const TaskSection = ({
         <div className={styles["container-img"]}>
           <Image
             src={emoji}
-            alt="Red clock image"
+            alt={`Chosen emoji to represent task ${title}`}
             width={25}
             height={25}
             priority
