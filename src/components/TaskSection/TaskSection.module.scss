@@ -7,7 +7,7 @@
   cursor: pointer;
 }
 
-.container-img-title {
+.container-img-details {
   display: flex;
   align-items: center;
   gap: 0.85rem;
@@ -15,6 +15,10 @@
   h3 {
     font-size: 1.25rem;
     font-weight: 500;
+  }
+
+  p {
+    margin-top: 0.85rem;
   }
 }
 

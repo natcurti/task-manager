@@ -5,6 +5,7 @@ interface ITaskSection {
   title: string;
   emoji: string;
   backgroundColor: string;
+  description?: string;
   icon?: React.ReactNode;
   iconColor?: string;
 }
@@ -12,13 +13,14 @@ interface ITaskSection {
 const TaskSection = ({
   title,
   emoji,
-  icon,
   backgroundColor,
+  description,
+  icon,
   iconColor,
 }: ITaskSection) => {
   return (
     <section className={styles.section} style={{ backgroundColor }}>
-      <div className={styles["container-img-title"]}>
+      <div className={styles["container-img-details"]}>
         <div className={styles["container-img"]}>
           <Image
             src={emoji}
@@ -28,7 +30,10 @@ const TaskSection = ({
             priority
           />
         </div>
-        <h3>{title}</h3>
+        <div>
+          <h3>{title}</h3>
+          {description !== "" && <p>{description}</p>}
+        </div>
       </div>
       {icon && (
         <div

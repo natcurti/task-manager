@@ -19,6 +19,7 @@ const Board = async () => {
               <TaskSection
                 key={task.id}
                 title={task.name}
+                description={task.description}
                 emoji={`/assets/${task.emoji}-emoji.png`}
                 icon={<TimeAtack />}
                 backgroundColor="#f5d565"
@@ -31,6 +32,7 @@ const Board = async () => {
               <TaskSection
                 key={task.id}
                 title={task.name}
+                description={task.description}
                 emoji={`/assets/${task.emoji}-emoji.png`}
                 icon={<DoneSmallIcon />}
                 backgroundColor="#a0ecb1"
@@ -43,6 +45,7 @@ const Board = async () => {
               <TaskSection
                 key={task.id}
                 title={task.name}
+                description={task.description}
                 emoji={`/assets/${task.emoji}-emoji.png`}
                 icon={<CloseIcon />}
                 backgroundColor="#f7d4d3"
@@ -55,6 +58,7 @@ const Board = async () => {
               <TaskSection
                 key={task.id}
                 title={task.name}
+                description={task.description}
                 emoji={`/assets/${task.emoji}-emoji.png`}
                 backgroundColor="#e3e8ef"
               />

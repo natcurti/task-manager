@@ -27,6 +27,7 @@ const Header = () => {
               }
             />
             <input
+              className={styles["input-subtitle"]}
               value={boardDetails.subtitle}
               onChange={(e) =>
                 setBoardDetails({
