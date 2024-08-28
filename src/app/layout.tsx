@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
 import "./globals.css";
-import { TasksProvider } from "../context/tasksContext";
+import { ModalProvider } from "@/context/modalContext";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -21,9 +21,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${outfit.variable}`}>
-      <TasksProvider>
+      <ModalProvider>
         <body>{children}</body>
-      </TasksProvider>
+      </ModalProvider>
     </html>
   );
 }
