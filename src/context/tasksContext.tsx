@@ -2,23 +2,33 @@
 import { ITask } from "@/interfaces/ITask";
 import { createContext, useContext, useState } from "react";
 
-const initialValue: ITask[] = [];
-
 interface ITasksContext {
-  tasks: ITask[];
-  setTasks: React.Dispatch<React.SetStateAction<ITask[]>>;
+  taskDetails: ITask;
+  setTaskDetails: React.Dispatch<React.SetStateAction<ITask>>;
 }
 
 export const TasksContext = createContext<ITasksContext>({
-  tasks: initialValue,
-  setTasks: () => {},
+  taskDetails: {
+    id: "",
+    name: "",
+    description: "",
+    emoji: "",
+    status: "",
+  },
+  setTaskDetails: () => {},
 });
 
 export const TasksProvider = ({ children }: { children: React.ReactNode }) => {
-  const [tasks, setTasks] = useState<ITask[]>([]);
+  const [taskDetails, setTaskDetails] = useState<ITask>({
+    id: "",
+    name: "",
+    description: "",
+    emoji: "",
+    status: "",
+  });
 
   return (
-    <TasksContext.Provider value={{ tasks, setTasks }}>
+    <TasksContext.Provider value={{ taskDetails, setTaskDetails }}>
       {children}
     </TasksContext.Provider>
   );

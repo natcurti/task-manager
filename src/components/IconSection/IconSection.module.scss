@@ -21,5 +21,10 @@
     display: grid;
     place-items: center;
     border-radius: 0.5rem;
+    cursor: pointer;
+
+    &:hover {
+      background-color: var(--orange);
+    }
   }
 }
