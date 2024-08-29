@@ -1,0 +1,27 @@
+.button {
+  padding: 0.5rem 0.85rem;
+  width: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 2rem;
+  border: none;
+  font-family: var(--outfit-font);
+  font-size: 1rem;
+  color: var(--white);
+  font-weight: 600;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.saveBtn {
+  background-color: var(--blue);
+}
+
+.deleteBtn {
+  background-color: var(--dark-gray);
+}

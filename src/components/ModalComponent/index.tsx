@@ -1,4 +1,8 @@
-import { CloseModal } from "../Icons";
+import Button from "../Button";
+import { CloseModal, DoneIcon, TrashIcon } from "../Icons";
+import IconSection from "../IconSection";
+import Input from "../Input";
+import Status from "../Status";
 import styles from "./ModalComponent.module.scss";
 
 const ModalComponent = () => {
@@ -11,17 +15,29 @@ const ModalComponent = () => {
             <CloseModal />
           </button>
         </div>
-        <div className={styles["container-input"]}>
-          <label htmlFor="name">Task Name:</label>
-          <input name="name" placeholder="Enter your task title" type="text" />
-        </div>
-        <div className={styles["container-input"]}>
-          <label htmlFor="description">Task Description</label>
-          <textarea
-            name="description"
-            placeholder="Enter a short description"
-            rows={10}
-          />
+
+        <Input
+          label="Task Name"
+          name="title"
+          placeholder="Enter your task title"
+          type="text"
+        />
+        <Input
+          isTextArea
+          label="Task Description"
+          name="description"
+          placeholder="Enter a short description"
+          rows={10}
+        />
+        <IconSection />
+        <Status />
+        <div className={styles["container-buttons"]}>
+          <Button text="Delete">
+            <TrashIcon />
+          </Button>
+          <Button text="Save" isSaveBtn>
+            <DoneIcon />
+          </Button>
         </div>
       </section>
     </div>

@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  h4 {
+    color: var(--medium-gray);
+    font-size: 0.85rem;
+  }
+}
+
+.container-buttons {
+  display: flex;
+  gap: 0.5rem;
+
+  button {
+    border: none;
+    background-color: var(--light-gray);
+    width: 2.5rem;
+    height: 2.5rem;
+    display: grid;
+    place-items: center;
+    border-radius: 0.5rem;
+  }
+}

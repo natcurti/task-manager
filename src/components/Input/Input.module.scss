@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  color: var(--medium-gray);
+
+  label {
+    font-size: 0.85rem;
+  }
+
+  input,
+  textarea {
+    border: 1px solid var(--medium-gray);
+    border-radius: 0.25rem;
+    padding: 0.5rem;
+    font-size: 1rem;
+    resize: none;
+
+    &::placeholder {
+      color: var(--medium-gray);
+      font-family: var(--outfit-font);
+      font-weight: 300;
+    }
+
+    &:focus {
+      outline-color: var(--blue);
+    }
+  }
+}

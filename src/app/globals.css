@@ -19,4 +19,6 @@ body {
   font-family: var(--outfit-font);
   font-weight: 400;
   background-color: var(--white);
+  position: relative;
+  min-height: 100vh;
 }

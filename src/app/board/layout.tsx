@@ -11,10 +11,10 @@ const BoardLayout = ({
   const { isOpen } = useModalContext();
 
   return (
-    <div>
+    <>
       {children}
       {isOpen && modal}
-    </div>
+    </>
   );
 };
 
