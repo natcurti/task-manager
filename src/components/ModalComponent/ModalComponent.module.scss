@@ -41,8 +41,13 @@
   display: grid;
   place-items: center;
   background-color: transparent;
-  border: 1px solid var(--light-gray);
+  border: 2px solid var(--light-gray);
   border-radius: 0.5rem;
+  cursor: pointer;
+
+  &:hover {
+    border-color: var(--orange);
+  }
 }
 
 .title {
