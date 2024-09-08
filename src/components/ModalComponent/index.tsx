@@ -13,7 +13,6 @@ const ModalComponent = () => {
   const overlayRef = useRef<HTMLDivElement>(null);
   const { isOpen, setIsOpen } = useModalContext();
   const { taskDetails, setTaskDetails } = useTasksContext();
-  console.log(taskDetails);
 
   const handleClickOverlay = (
     e: React.MouseEvent<HTMLDivElement, MouseEvent>
