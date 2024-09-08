@@ -12,19 +12,26 @@
 .container-buttons {
   display: flex;
   gap: 0.5rem;
+}
 
-  button {
-    border: none;
-    background-color: var(--light-gray);
-    width: 2.5rem;
-    height: 2.5rem;
-    display: grid;
-    place-items: center;
-    border-radius: 0.5rem;
-    cursor: pointer;
+.btn {
+  border: none;
+  background-color: var(--light-gray);
+  width: 2.5rem;
+  height: 2.5rem;
+  display: grid;
+  place-items: center;
+  border-radius: 0.5rem;
+  cursor: pointer;
 
-    &:hover {
-      background-color: var(--orange);
-    }
+  &:hover {
+    background-color: var(--yellow);
+  }
+}
+
+.btnActive {
+  background-color: var(--orange);
+  &:hover {
+    background-color: var(--orange);
   }
 }

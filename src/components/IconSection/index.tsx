@@ -1,5 +1,7 @@
 import Image from "next/image";
 import styles from "./IconSection.module.scss";
+import { ITask } from "@/interfaces/ITask";
+import { useTasksContext } from "@/context/tasksContext";
 
 const emojis = [
   {
@@ -14,12 +16,25 @@ const emojis = [
 ];
 
 const IconSection = () => {
+  const { taskDetails, setTaskDetails } = useTasksContext();
+
   return (
     <div className={styles.container}>
       <h4>Icon</h4>
       <div className={styles["container-buttons"]}>
         {emojis.map((emoji) => (
-          <button key={emoji.name}>
+          <button
+            key={emoji.name}
+            onClick={() =>
+              setTaskDetails({
+                ...taskDetails,
+                emoji: emoji.name,
+              })
+            }
+            className={`${styles.btn} ${
+              taskDetails.emoji === emoji.name ? styles.btnActive : ""
+            }`}
+          >
             <Image
               src={emoji.path}
               width={25}

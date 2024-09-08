@@ -1,7 +1,7 @@
 export interface ITask {
   id: string;
   name: string;
-  description?: string;
+  description: string;
   emoji: string;
   status?: string;
 }

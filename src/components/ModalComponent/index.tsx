@@ -7,10 +7,13 @@ import Input from "../Input";
 import Status from "../Status";
 import styles from "./ModalComponent.module.scss";
 import { useRef } from "react";
+import { useTasksContext } from "@/context/tasksContext";
 
 const ModalComponent = () => {
   const overlayRef = useRef<HTMLDivElement>(null);
   const { isOpen, setIsOpen } = useModalContext();
+  const { taskDetails, setTaskDetails } = useTasksContext();
+  console.log(taskDetails);
 
   const handleClickOverlay = (
     e: React.MouseEvent<HTMLDivElement, MouseEvent>
@@ -44,6 +47,13 @@ const ModalComponent = () => {
           name="title"
           placeholder="Enter your task title"
           type="text"
+          value={taskDetails.name}
+          onChange={(e) => {
+            setTaskDetails({
+              ...taskDetails,
+              name: e.target.value,
+            });
+          }}
         />
         <Input
           isTextArea
@@ -51,6 +61,13 @@ const ModalComponent = () => {
           name="description"
           placeholder="Enter a short description"
           rows={10}
+          value={taskDetails.description}
+          onChange={(e) => {
+            setTaskDetails({
+              ...taskDetails,
+              description: e.target.value,
+            });
+          }}
         />
         <IconSection />
         <Status />
