@@ -1,3 +1,4 @@
+"use client";
 import { useTasksContext } from "@/context/tasksContext";
 import styles from "./ButtonStatus.module.scss";
 import { DoneIcon } from "@/components/Icons";
@@ -29,11 +30,11 @@ const ButtonStatus = ({ status }: IButtonStatus) => {
           <div className={`${styles.completed}`}>
             <DoneSmallIcon />
           </div>
-        ) : (
+        ) : status === "Won't Do" ? (
           <div className={`${styles.wontDo}`}>
             <CloseIcon />
           </div>
-        )}
+        ) : null}
         {status}
       </div>
       {taskDetails.status === status && (

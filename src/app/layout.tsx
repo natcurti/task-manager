@@ -3,6 +3,7 @@ import { Outfit } from "next/font/google";
 import "./globals.css";
 import { ModalProvider } from "@/context/modalContext";
 import { TasksProvider } from "@/context/tasksContext";
+import { SelectTaskProvider } from "@/context/selectTaskContext";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -24,7 +25,9 @@ export default function RootLayout({
     <html lang="en" className={`${outfit.variable}`}>
       <ModalProvider>
         <TasksProvider>
-          <body>{children}</body>
+          <SelectTaskProvider>
+            <body>{children}</body>
+          </SelectTaskProvider>
         </TasksProvider>
       </ModalProvider>
     </html>

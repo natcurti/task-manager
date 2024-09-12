@@ -1,8 +1,12 @@
+"use client";
 import Image from "next/image";
 import styles from "./TaskSection.module.scss";
+import { useSelectTaskContext } from "@/context/selectTaskContext";
+import { useModalContext } from "@/context/modalContext";
 
 interface ITaskSection {
   title: string;
+  id: string;
   emoji: string;
   backgroundColor: string;
   description?: string;
@@ -12,14 +16,27 @@ interface ITaskSection {
 
 const TaskSection = ({
   title,
+  id,
   emoji,
   backgroundColor,
   description,
   icon,
   iconColor,
 }: ITaskSection) => {
+  const { setSelectedTask } = useSelectTaskContext();
+  const { isOpen, setIsOpen } = useModalContext();
+
+  const handleClickSection = (id: string) => {
+    setSelectedTask(id);
+    setIsOpen(!isOpen);
+  };
+
   return (
-    <section className={styles.section} style={{ backgroundColor }}>
+    <section
+      className={styles.section}
+      style={{ backgroundColor }}
+      onClick={() => handleClickSection(id)}
+    >
       <div className={styles["container-img-details"]}>
         <div className={styles["container-img"]}>
           <Image

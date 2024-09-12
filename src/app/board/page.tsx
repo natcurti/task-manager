@@ -4,10 +4,10 @@ import { CloseIcon, DoneSmallIcon, TimeAtack } from "@/components/Icons";
 import TaskSection from "@/components/TaskSection";
 import styles from "./board.module.scss";
 import AddTask from "@/components/AddTask";
-import { getData } from "@/firebase/getData";
+import { getAllTasks } from "@/firebase/handleTasks";
 
 const Board = async () => {
-  const tasks = await getData();
+  const tasks = await getAllTasks();
 
   return (
     <Container>
@@ -18,6 +18,7 @@ const Board = async () => {
             return (
               <TaskSection
                 key={task.id}
+                id={task.id}
                 title={task.name}
                 description={task.description}
                 emoji={`/assets/${task.emoji}-emoji.png`}
@@ -31,6 +32,7 @@ const Board = async () => {
             return (
               <TaskSection
                 key={task.id}
+                id={task.id}
                 title={task.name}
                 description={task.description}
                 emoji={`/assets/${task.emoji}-emoji.png`}
@@ -40,10 +42,11 @@ const Board = async () => {
               />
             );
           }
-          if (task.status === "Won't do") {
+          if (task.status === "Won't Do") {
             return (
               <TaskSection
                 key={task.id}
+                id={task.id}
                 title={task.name}
                 description={task.description}
                 emoji={`/assets/${task.emoji}-emoji.png`}
@@ -57,6 +60,7 @@ const Board = async () => {
             return (
               <TaskSection
                 key={task.id}
+                id={task.id}
                 title={task.name}
                 description={task.description}
                 emoji={`/assets/${task.emoji}-emoji.png`}
