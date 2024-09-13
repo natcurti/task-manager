@@ -5,6 +5,7 @@ import { addNewTask, getAllTasks } from "@/firebase/handleTasks";
 import { useModalContext } from "@/context/modalContext";
 import { useTaskDetailsContext } from "@/context/taskDetailsContext";
 import { useTasksContext } from "@/context/tasksContext";
+import { serverTimestamp } from "firebase/firestore";
 
 const Button = ({
   text,
@@ -17,7 +18,7 @@ const Button = ({
 }) => {
   const { taskDetails } = useTaskDetailsContext();
   const { isOpen, setIsOpen } = useModalContext();
-  const { setTasks } = useTasksContext();
+  const { setTasks, setErrorMessage } = useTasksContext();
 
   const handleSaveTask = async () => {
     if (taskDetails.name && taskDetails.emoji !== "") {
@@ -27,13 +28,16 @@ const Button = ({
         description: taskDetails.description,
         emoji: taskDetails.emoji,
         status: taskDetails.status,
+        createdAt: serverTimestamp(),
       };
       addNewTask(newTask);
       setIsOpen(!isOpen);
 
       const tasks = await getAllTasks();
-      if (tasks) {
+      if (tasks.length > 0) {
         setTasks(tasks);
+      } else {
+        setErrorMessage("Não foi possível obter as tarefas.");
       }
     }
   };

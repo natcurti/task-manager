@@ -2,7 +2,6 @@ import {
   addDoc,
   collection,
   getDocs,
-  onSnapshot,
   orderBy,
   query,
   where,
@@ -12,17 +11,17 @@ import { ITask } from "@/interfaces/ITask";
 
 const tasksRef = collection(db, "tasks");
 
-export const getAllTasks = async (): Promise<ITask[] | undefined> => {
-  const q = query(tasksRef, orderBy("id", "asc"));
+export const getAllTasks = async (): Promise<ITask[]> => {
+  const q = query(tasksRef, orderBy("createdAt"));
+  const tasks: ITask[] = [];
 
   try {
-    const tasks: ITask[] = [];
     const querySnapShot = await getDocs(q);
     querySnapShot.forEach((task) => tasks.push(task.data() as ITask));
-    return tasks;
   } catch (error) {
     console.log(error);
   }
+  return tasks;
 };
 
 export const getOneTask = async (id: string): Promise<ITask | undefined> => {
@@ -44,15 +43,3 @@ export const addNewTask = async (task: ITask) => {
     console.log(error);
   }
 };
-
-// export const testeSnapShot = () => {
-//   try {
-//     onSnapshot(tasksRef, (snapshot) => {
-//       snapshot.forEach((doc) => {
-//         console.log(doc.data());
-//       });
-//     });
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
