@@ -1,7 +1,7 @@
 "use client";
 import { useModalContext } from "@/context/modalContext";
 import { useSelectTaskContext } from "@/context/selectTaskContext";
-import { useTasksContext } from "@/context/tasksContext";
+import { useTaskDetailsContext } from "@/context/taskDetailsContext";
 import { useEffect } from "react";
 
 const BoardLayout = ({
@@ -12,7 +12,7 @@ const BoardLayout = ({
   modal: React.ReactNode;
 }) => {
   const { isOpen } = useModalContext();
-  const { setTaskDetails } = useTasksContext();
+  const { setTaskDetails } = useTaskDetailsContext();
   const { setSelectedTask } = useSelectTaskContext();
 
   useEffect(() => {

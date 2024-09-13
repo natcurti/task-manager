@@ -7,12 +7,12 @@ import Input from "../Input";
 import Status from "../Status";
 import styles from "./ModalComponent.module.scss";
 import { useRef } from "react";
-import { useTasksContext } from "@/context/tasksContext";
+import { useTaskDetailsContext } from "@/context/taskDetailsContext";
 
 const ModalComponent = () => {
   const overlayRef = useRef<HTMLDivElement>(null);
   const { isOpen, setIsOpen } = useModalContext();
-  const { taskDetails, setTaskDetails } = useTasksContext();
+  const { taskDetails, setTaskDetails } = useTaskDetailsContext();
 
   const handleClickOverlay = (
     e: React.MouseEvent<HTMLDivElement, MouseEvent>

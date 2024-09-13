@@ -1,7 +1,6 @@
 import Image from "next/image";
 import styles from "./IconSection.module.scss";
-import { ITask } from "@/interfaces/ITask";
-import { useTasksContext } from "@/context/tasksContext";
+import { useTaskDetailsContext } from "@/context/taskDetailsContext";
 
 const emojis = [
   {
@@ -16,7 +15,7 @@ const emojis = [
 ];
 
 const IconSection = () => {
-  const { taskDetails, setTaskDetails } = useTasksContext();
+  const { taskDetails, setTaskDetails } = useTaskDetailsContext();
 
   return (
     <div className={styles.container}>

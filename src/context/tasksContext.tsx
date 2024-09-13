@@ -1,34 +1,33 @@
 "use client";
+import { getAllTasks } from "@/firebase/handleTasks";
 import { ITask } from "@/interfaces/ITask";
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 interface ITasksContext {
-  taskDetails: ITask;
-  setTaskDetails: React.Dispatch<React.SetStateAction<ITask>>;
+  tasks: ITask[];
+  setTasks: React.Dispatch<React.SetStateAction<ITask[]>>;
 }
 
 export const TasksContext = createContext<ITasksContext>({
-  taskDetails: {
-    id: "",
-    name: "",
-    description: "",
-    emoji: "",
-    status: "",
-  },
-  setTaskDetails: () => {},
+  tasks: [],
+  setTasks: () => {},
 });
 
 export const TasksProvider = ({ children }: { children: React.ReactNode }) => {
-  const [taskDetails, setTaskDetails] = useState<ITask>({
-    id: "",
-    name: "",
-    description: "",
-    emoji: "",
-    status: "",
-  });
+  const [tasks, setTasks] = useState<ITask[]>([]);
+
+  useEffect(() => {
+    const getTasks = async () => {
+      const tasks = await getAllTasks();
+      if (tasks) {
+        setTasks(tasks);
+      }
+    };
+    getTasks();
+  }, []);
 
   return (
-    <TasksContext.Provider value={{ taskDetails, setTaskDetails }}>
+    <TasksContext.Provider value={{ tasks, setTasks }}>
       {children}
     </TasksContext.Provider>
   );

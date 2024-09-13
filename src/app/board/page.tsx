@@ -1,13 +1,14 @@
+"use client";
 import Container from "@/components/Container";
 import Header from "@/components/Header";
 import { CloseIcon, DoneSmallIcon, TimeAtack } from "@/components/Icons";
 import TaskSection from "@/components/TaskSection";
 import styles from "./board.module.scss";
 import AddTask from "@/components/AddTask";
-import { getAllTasks } from "@/firebase/handleTasks";
+import { useTasksContext } from "@/context/tasksContext";
 
-const Board = async () => {
-  const tasks = await getAllTasks();
+const Board = () => {
+  const { tasks } = useTasksContext();
 
   return (
     <Container>

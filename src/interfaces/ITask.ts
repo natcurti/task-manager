@@ -3,5 +3,5 @@ export interface ITask {
   name: string;
   description: string;
   emoji: string;
-  status?: string;
+  status: string;
 }

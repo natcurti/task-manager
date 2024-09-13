@@ -1,7 +1,7 @@
 "use client";
 import { createContext, useContext, useEffect, useState } from "react";
-import { useTasksContext } from "./tasksContext";
 import { getOneTask } from "@/firebase/handleTasks";
+import { useTaskDetailsContext } from "./taskDetailsContext";
 
 interface ISelectTaskContext {
   selectedTask: string;
@@ -19,7 +19,7 @@ export const SelectTaskProvider = ({
   children: React.ReactNode;
 }) => {
   const [selectedTask, setSelectedTask] = useState("");
-  const { setTaskDetails } = useTasksContext();
+  const { setTaskDetails } = useTaskDetailsContext();
 
   useEffect(() => {
     if (selectedTask !== "") {

@@ -1,15 +1,15 @@
 "use client";
-import { useTasksContext } from "@/context/tasksContext";
 import styles from "./ButtonStatus.module.scss";
 import { DoneIcon } from "@/components/Icons";
 import { CloseIcon, DoneSmallIcon, TimeAtack } from "../../Icons";
+import { useTaskDetailsContext } from "@/context/taskDetailsContext";
 
 interface IButtonStatus {
   status: string;
 }
 
 const ButtonStatus = ({ status }: IButtonStatus) => {
-  const { taskDetails, setTaskDetails } = useTasksContext();
+  const { taskDetails, setTaskDetails } = useTaskDetailsContext();
 
   return (
     <button
