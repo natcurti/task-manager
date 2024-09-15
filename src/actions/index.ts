@@ -2,7 +2,6 @@
 import { db } from "@/firebase/config";
 import { ITask } from "@/interfaces/ITask";
 import {
-  addDoc,
   collection,
   deleteDoc,
   doc,
@@ -41,28 +40,31 @@ export async function getOneTask(id: string): Promise<ITask | undefined> {
   }
 }
 
-export async function addNewTask(task: ITask) {
+export async function addNewTask(task: ITask): Promise<string | undefined> {
   try {
     await setDoc(doc(db, "tasks", task.id), task);
     revalidatePath("/board");
+    return `Tarefa criada com sucesso`;
   } catch (error) {
     console.log(error);
   }
 }
 
-export async function updateTask(task: ITask) {
+export async function updateTask(task: ITask): Promise<string | undefined> {
   try {
     await setDoc(doc(db, "tasks", task.id), task, { merge: true });
     revalidatePath("/board");
+    return `Tarefa atualizada com sucesso`;
   } catch (error) {
     console.log(error);
   }
 }
 
-export async function deleteTask(id: string) {
+export async function deleteTask(id: string): Promise<string | undefined> {
   try {
     await deleteDoc(doc(db, "tasks", id));
     revalidatePath("/board");
+    return `Tarefa deletada com sucesso`;
   } catch (error) {
     console.log(error);
   }

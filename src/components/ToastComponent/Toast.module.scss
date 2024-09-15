@@ -1,0 +1,41 @@
+@keyframes toastAnimation {
+  from {
+    bottom: -5rem;
+  }
+
+  to {
+    bottom: 2rem;
+  }
+}
+
+.card {
+  position: absolute;
+  left: 2rem;
+  padding: 1rem;
+  height: 50px;
+  font-size: 1.25rem;
+  color: var(--white);
+  border-radius: 0.5rem;
+  display: grid;
+  place-items: center;
+  animation: toastAnimation 1.5s forwards;
+
+  button {
+    position: absolute;
+    right: 0.5rem;
+    top: 0.5rem;
+    background-color: transparent;
+    display: grid;
+    place-items: center;
+    border: none;
+    cursor: pointer;
+  }
+}
+
+.bg-success {
+  background-color: var(--green);
+}
+
+.bg-error {
+  background-color: var(--red);
+}

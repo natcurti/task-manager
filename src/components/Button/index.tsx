@@ -6,6 +6,7 @@ import { useTaskDetailsContext } from "@/context/taskDetailsContext";
 import { serverTimestamp } from "firebase/firestore";
 import { addNewTask, deleteTask, updateTask } from "@/actions";
 import { useSelectTaskContext } from "@/context/selectTaskContext";
+import { useToast } from "@/context/toastContext";
 
 const Button = ({
   text,
@@ -19,6 +20,7 @@ const Button = ({
   const { selectedTask } = useSelectTaskContext();
   const { taskDetails } = useTaskDetailsContext();
   const { isOpen, setIsOpen } = useModalContext();
+  const { setShowToast, setMessageSuccess, setMessageError } = useToast();
 
   const handleClick = () => {
     if (isSaveBtn) {
@@ -38,7 +40,13 @@ const Button = ({
         status: taskDetails.status,
       };
       const task = JSON.parse(JSON.stringify(newTask));
-      await updateTask(task);
+      const response = await updateTask(task);
+      if (response) {
+        setMessageSuccess(response);
+      } else {
+        setMessageError("Não foi possível atualizar a tarefa.");
+      }
+      setShowToast(true);
     }
 
     if (!selectedTask && taskDetails.name !== "" && taskDetails.emoji !== "") {
@@ -51,14 +59,26 @@ const Button = ({
         createdAt: serverTimestamp(),
       };
       const task = JSON.parse(JSON.stringify(newTask));
-      await addNewTask(task);
+      const response = await addNewTask(task);
+      if (response) {
+        setMessageSuccess(response);
+      } else {
+        setMessageError("Não foi possível criar a tarefa.");
+      }
+      setShowToast(true);
     }
     setIsOpen(!isOpen);
   };
 
   const handleDeleteTask = async () => {
     if (selectedTask) {
-      await deleteTask(taskDetails.id);
+      const response = await deleteTask(taskDetails.id);
+      if (response) {
+        setMessageSuccess(response);
+      } else {
+        setMessageError("Não foi possível deletar a tarefa.");
+      }
+      setShowToast(true);
       setIsOpen(!isOpen);
     }
   };

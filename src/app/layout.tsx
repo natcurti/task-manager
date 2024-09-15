@@ -4,6 +4,7 @@ import "./globals.css";
 import { ModalProvider } from "@/context/modalContext";
 import { SelectTaskProvider } from "@/context/selectTaskContext";
 import { TaskDetailsProvider } from "@/context/taskDetailsContext";
+import { ToastProvider } from "@/context/toastContext";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -24,11 +25,13 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${outfit.variable}`}>
       <ModalProvider>
-        <TaskDetailsProvider>
-          <SelectTaskProvider>
-            <body>{children}</body>
-          </SelectTaskProvider>
-        </TaskDetailsProvider>
+        <ToastProvider>
+          <TaskDetailsProvider>
+            <SelectTaskProvider>
+              <body>{children}</body>
+            </SelectTaskProvider>
+          </TaskDetailsProvider>
+        </ToastProvider>
       </ModalProvider>
     </html>
   );
