@@ -1,7 +1,7 @@
 "use client";
 import { createContext, useContext, useEffect, useState } from "react";
-import { getOneTask } from "@/firebase/handleTasks";
 import { useTaskDetailsContext } from "./taskDetailsContext";
+import { getOneTask } from "@/actions";
 
 interface ISelectTaskContext {
   selectedTask: string;

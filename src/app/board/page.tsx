@@ -1,21 +1,20 @@
-"use client";
 import Container from "@/components/Container";
 import Header from "@/components/Header";
 import { CloseIcon, DoneSmallIcon, TimeAtack } from "@/components/Icons";
 import TaskSection from "@/components/TaskSection";
 import styles from "./board.module.scss";
 import AddTask from "@/components/AddTask";
-import { useTasksContext } from "@/context/tasksContext";
+import { getAllTasks } from "@/actions";
 
-const Board = () => {
-  const { tasks, errorMessage } = useTasksContext();
+const Board = async () => {
+  const tasks = await getAllTasks();
 
   return (
-    <Container>
-      <Header />
-      <main className={styles["container-tasks"]}>
-        {tasks.length > 0 ? (
-          tasks.map((task) => {
+    <>
+      <Container>
+        <Header />
+        <main className={styles["container-tasks"]}>
+          {tasks?.map((task) => {
             if (task.status === "In Progress") {
               return (
                 <TaskSection
@@ -70,13 +69,12 @@ const Board = () => {
                 />
               );
             }
-          })
-        ) : (
-          <p className={styles.error}>{errorMessage}</p>
-        )}
-        <AddTask />
-      </main>
-    </Container>
+          })}
+          {!tasks && <p className={styles.error}>Erro ao carregar tarefas.</p>}
+          <AddTask />
+        </main>
+      </Container>
+    </>
   );
 };
 
