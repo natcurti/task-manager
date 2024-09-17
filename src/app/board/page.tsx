@@ -8,6 +8,8 @@ import { getAllTasks } from "@/actions";
 
 const Board = async () => {
   const tasks = await getAllTasks();
+  console.log(tasks);
+  console.log("oi, estou na rota board");
 
   return (
     <>
@@ -28,8 +30,7 @@ const Board = async () => {
                   iconColor="#e9a23b"
                 />
               );
-            }
-            if (task.status === "Completed") {
+            } else if (task.status === "Completed") {
               return (
                 <TaskSection
                   key={task.id}
@@ -42,8 +43,7 @@ const Board = async () => {
                   iconColor="#32d657"
                 />
               );
-            }
-            if (task.status === "Won't Do") {
+            } else if (task.status === "Won't Do") {
               return (
                 <TaskSection
                   key={task.id}
@@ -56,8 +56,7 @@ const Board = async () => {
                   iconColor="#dd524c"
                 />
               );
-            }
-            if (task.status === "") {
+            } else {
               return (
                 <TaskSection
                   key={task.id}

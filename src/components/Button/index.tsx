@@ -47,6 +47,7 @@ const Button = ({
       }
       setShowToast(true);
       setIsOpen(!isOpen);
+      return;
     }
 
     if (!selectedTask && taskDetails.name !== "" && taskDetails.emoji !== "") {
@@ -66,11 +67,13 @@ const Button = ({
       }
       setShowToast(true);
       setIsOpen(!isOpen);
+      return;
     }
 
     if (taskDetails.name == "" && taskDetails.emoji == "") {
       setMessageError("Preencha o nome e escolha um emoji");
       setShowToast(true);
+      return;
     }
   };
 
@@ -86,8 +89,6 @@ const Button = ({
       setIsOpen(!isOpen);
     }
   };
-
-  console.log(`${!isSaveBtn} ${!selectedTask}`);
 
   return (
     <button

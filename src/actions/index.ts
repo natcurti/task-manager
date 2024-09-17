@@ -22,7 +22,11 @@ export async function getAllTasks(): Promise<ITask[] | undefined> {
   try {
     const tasks: ITask[] = [];
     const querySnapShot = await getDocs(q);
-    querySnapShot.forEach((task) => tasks.push(task.data() as ITask));
+    querySnapShot.forEach((task) => {
+      const newTask = { ...task.data() };
+      delete newTask.createdAt;
+      tasks.push(newTask as ITask);
+    });
     return tasks;
   } catch (error) {
     console.log(error);
