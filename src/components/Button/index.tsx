@@ -3,7 +3,6 @@ import { v4 as uuidv4 } from "uuid";
 import styles from "./Button.module.scss";
 import { useModalContext } from "@/context/modalContext";
 import { useTaskDetailsContext } from "@/context/taskDetailsContext";
-import { serverTimestamp } from "firebase/firestore";
 import { addNewTask, deleteTask, updateTask } from "@/actions";
 import { useSelectTaskContext } from "@/context/selectTaskContext";
 import { useToast } from "@/context/toastContext";
@@ -47,6 +46,7 @@ const Button = ({
         setMessageError("Não foi possível atualizar a tarefa.");
       }
       setShowToast(true);
+      setIsOpen(!isOpen);
     }
 
     if (!selectedTask && taskDetails.name !== "" && taskDetails.emoji !== "") {
@@ -56,7 +56,6 @@ const Button = ({
         description: taskDetails.description,
         emoji: taskDetails.emoji,
         status: taskDetails.status,
-        createdAt: serverTimestamp(),
       };
       const task = JSON.parse(JSON.stringify(newTask));
       const response = await addNewTask(task);
@@ -66,8 +65,13 @@ const Button = ({
         setMessageError("Não foi possível criar a tarefa.");
       }
       setShowToast(true);
+      setIsOpen(!isOpen);
     }
-    setIsOpen(!isOpen);
+
+    if (taskDetails.name == "" && taskDetails.emoji == "") {
+      setMessageError("Preencha o nome e escolha um emoji");
+      setShowToast(true);
+    }
   };
 
   const handleDeleteTask = async () => {
@@ -83,12 +87,15 @@ const Button = ({
     }
   };
 
+  console.log(`${!isSaveBtn} ${!selectedTask}`);
+
   return (
     <button
       className={`${styles.button} ${
         isSaveBtn ? styles.saveBtn : styles.deleteBtn
       }`}
       onClick={handleClick}
+      disabled={!isSaveBtn && !selectedTask}
     >
       {text}
       {children}

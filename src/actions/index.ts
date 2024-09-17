@@ -8,6 +8,7 @@ import {
   getDocs,
   orderBy,
   query,
+  serverTimestamp,
   setDoc,
   where,
 } from "firebase/firestore";
@@ -16,7 +17,7 @@ import { revalidatePath } from "next/cache";
 const tasksRef = collection(db, "tasks");
 
 export async function getAllTasks(): Promise<ITask[] | undefined> {
-  const q = query(tasksRef, orderBy("createdAt", "desc"));
+  const q = query(tasksRef, orderBy("createdAt"));
 
   try {
     const tasks: ITask[] = [];
@@ -41,8 +42,13 @@ export async function getOneTask(id: string): Promise<ITask | undefined> {
 }
 
 export async function addNewTask(task: ITask): Promise<string | undefined> {
+  const newTask = {
+    ...task,
+    createdAt: serverTimestamp(),
+  };
+
   try {
-    await setDoc(doc(db, "tasks", task.id), task);
+    await setDoc(doc(db, "tasks", task.id), newTask);
     revalidatePath("/board");
     return `Tarefa criada com sucesso`;
   } catch (error) {

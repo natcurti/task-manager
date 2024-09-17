@@ -39,7 +39,7 @@ const BoardLayout = ({
         setShowToast(false);
         setMessageSuccess("");
         setMessageError("");
-      }, 4000);
+      }, 3000);
     }
   }, [showToast, setShowToast, setMessageSuccess, setMessageError]);
 
